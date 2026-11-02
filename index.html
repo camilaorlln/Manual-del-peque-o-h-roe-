@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual del Pequeño Héroe - El Árbol de la Convivencia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka & Inter para diseño infantil y altamente legible -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos visuales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandGreen: '#4ADE80',
+                        brandGreenDark: '#16A34A',
+                        brandOrange: '#FB923C',
+                        brandOrangeDark: '#EA580C',
+                        brandYellow: '#FACC15',
+                        brandYellowDark: '#CA8A04',
+                        brandSky: '#38BDF8',
+                        brandSkyDark: '#0284C7',
+                        bgSoft: '#F0FDF4'
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #E0F2FE;
+            background-image: radial-gradient(#4ADE80 1.5px, transparent 1.5px), radial-gradient(#38BDF8 1.5px, #E0F2FE 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+
+        .shadow-playful {
+            box-shadow: 0 10px 0px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Estilos específicos para impresión */
+        @media print {
+            body {
+                background: none !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-page {
+                page-break-after: always;
+                box-shadow: none !important;
+                border: 3px solid #cbd5e1 !important;
+                margin-bottom: 20px !important;
+                display: block !important;
+            }
+            .page-container {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center p-3 sm:p-6">
+
+    <!-- BARRA SUPERIOR DE CONTROL / IMPRESIÓN (NO PRINT) -->
+    <div class="no-print w-full max-w-2xl flex justify-between items-center mb-4 bg-white/90 backdrop-blur p-3 rounded-2xl shadow-md border-2 border-brandSky">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🌳</span>
+            <span class="font-bold text-gray-700 text-sm sm:text-base">El Árbol de la Convivencia</span>
+        </div>
+        <button onclick="window.print()" class="bg-brandOrange hover:bg-brandOrangeDark text-white px-4 py-2 rounded-xl text-sm font-bold shadow-md transition transform active:scale-95 flex items-center gap-2">
+            <i class="fa-solid fa-print"></i> Guardar / Imprimir
+        </button>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL DEL FOLLETO -->
+    <div class="w-full max-w-2xl page-container relative">
+
+        <!-- PORTADA / PÁGINA 0 - PÁGINA VERDE -->
+        <div id="page-0" class="page-card print-page bg-emerald-50 rounded-3xl p-6 sm:p-8 border-4 border-brandGreen shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello El Árbol de la Convivencia -->
+            <div class="absolute top-4 right-4 bg-white border-2 border-brandGreen text-brandGreenDark text-xs px-3 py-1.5 rounded-full flex items-center gap-1 font-bold shadow-sm">
+                <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+            </div>
+
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-brandGreen text-white p-4 rounded-full text-5xl mb-4 shadow-md border-2 border-green-600 animate-bounce">
+                    🦸‍♂️
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black text-gray-800 leading-tight">
+                    MANUAL DEL <br><span class="text-brandGreenDark">PEQUEÑO HÉROE</span>
+                </h1>
+                <p class="text-emerald-700 font-bold text-lg mt-1">¡RETOS DE CONVIVENCIA!</p>
+            </div>
+
+            <!-- Introducción -->
+            <div class="bg-white border-2 border-dashed border-brandGreen p-5 rounded-2xl my-4 shadow-sm">
+                <p class="text-gray-800 text-base sm:text-lg leading-relaxed text-center font-bold">
+                    ¡Hola, amiguito! ¿Sabías que en tu día a día en casa y en la escuela puedes convertirte en un auténtico superhéroe? 🌟
+                </p>
+                <p class="text-gray-700 text-sm sm:text-base mt-2 text-center">
+                    No necesitas capa ni superpoderes extraños, solo tus ganas de pasarla bien y cuidar a los demás. Abre bien los ojos, elige tus misiones favoritas y descubre el superpoder que vive dentro de ti con estos 5 retos divertidos.
+                </p>
+            </div>
+
+            <!-- Botón inicio -->
+            <div class="text-center no-print">
+                <button onclick="goToPage(1)" class="bg-brandGreen hover:bg-brandGreenDark text-white font-bold text-xl px-8 py-3 rounded-2xl shadow-lg border-b-4 border-green-700 transition transform active:scale-95 flex items-center gap-2 mx-auto">
+                    ¡Empieza la Aventura! <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="text-center text-xs text-emerald-800 font-bold uppercase tracking-widest mt-2">
+                Página 1 de 6
+            </div>
+        </div>
+
+        <!-- PÁGINA 1: MISIÓN 1 - PÁGINA CELESTE -->
+        <div id="page-1" class="page-card print-page hidden bg-sky-50 rounded-3xl p-6 sm:p-8 border-4 border-brandSky shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-brandSkyDark font-bold text-xs px-3 py-1 rounded-full border border-brandSky shadow-sm">
+                    📱 Misión 1
+                </span>
+                <div class="bg-white border border-brandSky text-brandSkyDark text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mt-2">
+                    <div class="bg-brandSky text-white p-3 rounded-2xl text-2xl shadow">📱</div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800 leading-tight">¡El Gran Apagón de Pantallas!</h2>
+                        <span class="text-xs font-bold text-brandSkyDark bg-white px-2 py-0.5 rounded-md border border-sky-300">
+                            Superpoder: ¡Tiempo de Calidad y Atención!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenido Reto -->
+                <div class="mt-5 space-y-3">
+                    <div class="bg-white border-l-4 border-brandSky p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-brandSkyDark text-sm">🎮 Cómo jugar:</p>
+                        <p class="text-gray-700 text-sm">¡Desafío ninja de tecnología! Durante 45 minutos en la tarde o a la hora de la cena, vamos a guardar teléfonos, tabletas y videojuegos en una caja secreta. ¡Cero pantallas!</p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-sky-600 p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-sky-700 text-sm">🗺️ Tu misión:</p>
+                        <p class="text-gray-700 text-sm">Mientras disfrutamos juntos, cada miembro de la familia se convierte en un explorador que cuenta cuál fue la mejor aventura de su día... ¡y también ese momento difícil que logró superar!</p>
+                    </div>
+                </div>
+
+                <!-- Reflexión -->
+                <div class="mt-4 bg-white border-2 border-brandSky p-4 rounded-2xl relative shadow-sm">
+                    <div class="absolute -top-3 left-4 bg-brandSky text-white text-xs font-bold px-2 py-0.5 rounded-md">
+                        💡 Reflexión
+                    </div>
+                    <p class="text-gray-700 text-xs sm:text-sm pt-1 italic leading-relaxed">
+                        "Apagar un ratito las pantallas nos enciende el corazón para escucharnos de verdad, darnos cuenta de cómo la pasamos y apoyarnos como el mejor equipo del mundo."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactivo Check list -->
+            <div class="mt-4 pt-3 border-t border-sky-200 flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" onchange="toggleStar(1)" id="star-1" class="w-6 h-6 text-brandSky rounded-lg border-2 border-sky-300 focus:ring-0 cursor-pointer">
+                    <span class="font-bold text-gray-700 text-sm">¡Misión Cumplida!</span>
+                </label>
+                <span id="star-badge-1" class="opacity-30 text-2xl transition-all">⭐</span>
+            </div>
+
+            <div class="text-center text-xs text-sky-800 font-bold uppercase tracking-widest mt-2">
+                Página 2 de 6
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: MISIÓN 2 - PÁGINA NARANJA -->
+        <div id="page-2" class="page-card print-page hidden bg-orange-50 rounded-3xl p-6 sm:p-8 border-4 border-brandOrange shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-brandOrangeDark font-bold text-xs px-3 py-1 rounded-full border border-brandOrange shadow-sm">
+                    👑 Misión 2
+                </span>
+                <div class="bg-white border border-brandOrange text-brandOrangeDark text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mt-2">
+                    <div class="bg-brandOrange text-white p-3 rounded-2xl text-2xl shadow">👑</div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800 leading-tight">¡Cambiemos de Zapatos por un Día!</h2>
+                        <span class="text-xs font-bold text-brandOrangeDark bg-white px-2 py-0.5 rounded-md border border-orange-300">
+                            Superpoder: ¡Empatía y Agradecimiento!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenido Reto -->
+                <div class="mt-5 space-y-3">
+                    <div class="bg-white border-l-4 border-brandOrange p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-brandOrangeDark text-sm">👟 Cómo jugar:</p>
+                        <p class="text-gray-700 text-sm">¿Alguna vez te has preguntado cómo se siente ser grande? ¡Es hora de averiguarlo! Durante el fin de semana, te encargarás de una tarea importante de los adultos (como ayudar en la limpieza de la casa o doblar la ropa) y los grandes te ayudarán con una misión tuya.</p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-orange-600 p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-orange-700 text-sm">💬 Tu misión:</p>
+                        <p class="text-gray-700 text-sm">Al terminar, nos sentaremos a platicar lo divertido (¡y a veces cansado!) que es hacer el trabajo del otro.</p>
+                    </div>
+                </div>
+
+                <!-- Reflexión -->
+                <div class="mt-4 bg-white border-2 border-brandOrange p-4 rounded-2xl relative shadow-sm">
+                    <div class="absolute -top-3 left-4 bg-brandOrange text-white text-xs font-bold px-2 py-0.5 rounded-md">
+                        💡 Reflexión
+                    </div>
+                    <p class="text-gray-700 text-xs sm:text-sm pt-1 italic leading-relaxed">
+                        "Ponernos en los zapatos de mamá o papá nos ayuda a entender todo el esfuerzo que hacen con amor por nosotros, y a valorar que en casa todos nos ayudamos."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactivo Check list -->
+            <div class="mt-4 pt-3 border-t border-orange-200 flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" onchange="toggleStar(2)" id="star-2" class="w-6 h-6 text-brandOrange rounded-lg border-2 border-orange-300 focus:ring-0 cursor-pointer">
+                    <span class="font-bold text-gray-700 text-sm">¡Misión Cumplida!</span>
+                </label>
+                <span id="star-badge-2" class="opacity-30 text-2xl transition-all">⭐</span>
+            </div>
+
+            <div class="text-center text-xs text-orange-800 font-bold uppercase tracking-widest mt-2">
+                Página 3 de 6
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: MISIÓN 3 - PÁGINA AMARILLA -->
+        <div id="page-3" class="page-card print-page hidden bg-yellow-50 rounded-3xl p-6 sm:p-8 border-4 border-brandYellow shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-yellow-800 font-bold text-xs px-3 py-1 rounded-full border border-brandYellow shadow-sm">
+                    🕵️‍♂️ Misión 3
+                </span>
+                <div class="bg-white border border-brandYellow text-yellow-800 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mt-2">
+                    <div class="bg-brandYellow text-yellow-900 p-3 rounded-2xl text-2xl shadow">🕵️‍♂️</div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800 leading-tight">¡El Sabio Secreto de la Amistad!</h2>
+                        <span class="text-xs font-bold text-yellow-800 bg-white px-2 py-0.5 rounded-md border border-yellow-300">
+                            Superpoder: ¡Empatía y Aprecio!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenido Reto -->
+                <div class="mt-5 space-y-3">
+                    <div class="bg-white border-l-4 border-brandYellow p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-yellow-900 text-sm">🔍 Cómo jugar:</p>
+                        <p class="text-gray-700 text-sm">¡Operación encubierta en la escuela! Debes escoger a un compañero en especial y observarlo en secreto.</p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-yellow-600 p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-yellow-800 text-sm">💌 Tu misión:</p>
+                        <p class="text-gray-700 text-sm">Tu objetivo durante toda la semana es volverte un detective de bondades: observa las cosas lindas que hace ese compañero y, al final de la semana, déjale una nota anónima llena de dibujos y palabras hermosas destacando lo genial que es.</p>
+                    </div>
+                </div>
+
+                <!-- Reflexión -->
+                <div class="mt-4 bg-white border-2 border-brandYellow p-4 rounded-2xl relative shadow-sm">
+                    <div class="absolute -top-3 left-4 bg-brandYellow text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-md">
+                        💡 Reflexión
+                    </div>
+                    <p class="text-gray-700 text-xs sm:text-sm pt-1 italic leading-relaxed">
+                        "Cuando aprendemos a buscar lo bueno en los demás, nos convertimos en magos capaces de alegrarle el día a cualquiera con un simple detalle."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactivo Check list -->
+            <div class="mt-4 pt-3 border-t border-yellow-200 flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" onchange="toggleStar(3)" id="star-3" class="w-6 h-6 text-brandYellow rounded-lg border-2 border-yellow-400 focus:ring-0 cursor-pointer">
+                    <span class="font-bold text-gray-700 text-sm">¡Misión Cumplida!</span>
+                </label>
+                <span id="star-badge-3" class="opacity-30 text-2xl transition-all">⭐</span>
+            </div>
+
+            <div class="text-center text-xs text-yellow-800 font-bold uppercase tracking-widest mt-2">
+                Página 4 de 6
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: MISIÓN 4 - PÁGINA VERDE -->
+        <div id="page-4" class="page-card print-page hidden bg-emerald-50 rounded-3xl p-6 sm:p-8 border-4 border-brandGreen shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-brandGreenDark font-bold text-xs px-3 py-1 rounded-full border border-brandGreen shadow-sm">
+                    👻 Misión 4
+                </span>
+                <div class="bg-white border border-brandGreen text-brandGreenDark text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mt-2">
+                    <div class="bg-brandGreen text-white p-3 rounded-2xl text-2xl shadow">👻</div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800 leading-tight">¡La Cadena del Fantasmita Invisible!</h2>
+                        <span class="text-xs font-bold text-brandGreenDark bg-white px-2 py-0.5 rounded-md border border-green-300">
+                            Superpoder: ¡La Solidaridad!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenido Reto -->
+                <div class="mt-5 space-y-3">
+                    <div class="bg-white border-l-4 border-brandGreen p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-brandGreenDark text-sm">✨ Cómo jugar:</p>
+                        <p class="text-gray-700 text-sm">¿Puedes hacer un superfavor sin que nadie se entere de que fuiste tú? ¡Ese es el reto del fantasmita invisible!</p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-emerald-600 p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-emerald-700 text-sm">🎁 Tu misión:</p>
+                        <p class="text-gray-700 text-sm">Ayuda a un compañero o amigo organizándole sus útiles, compartiéndole un material o aclarándole una duda, pero hazlo sin presumir ni esperar aplausos, ¡como un superhéroe secreto!</p>
+                    </div>
+                </div>
+
+                <!-- Reflexión -->
+                <div class="mt-4 bg-white border-2 border-brandGreen p-4 rounded-2xl relative shadow-sm">
+                    <div class="absolute -top-3 left-4 bg-brandGreen text-white text-xs font-bold px-2 py-0.5 rounded-md">
+                        💡 Reflexión
+                    </div>
+                    <p class="text-gray-700 text-xs sm:text-sm pt-1 italic leading-relaxed">
+                        "Los actos más bonitos son los que nacen del corazón sin buscar premios, porque ayudar a otros por el simple gusto de verlos sonreír es la mayor victoria."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactivo Check list -->
+            <div class="mt-4 pt-3 border-t border-emerald-200 flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" onchange="toggleStar(4)" id="star-4" class="w-6 h-6 text-brandGreen rounded-lg border-2 border-green-300 focus:ring-0 cursor-pointer">
+                    <span class="font-bold text-gray-700 text-sm">¡Misión Cumplida!</span>
+                </label>
+                <span id="star-badge-4" class="opacity-30 text-2xl transition-all">⭐</span>
+            </div>
+
+            <div class="text-center text-xs text-emerald-800 font-bold uppercase tracking-widest mt-2">
+                Página 5 de 6
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: MISIÓN 5 - PÁGINA CELESTE -->
+        <div id="page-5" class="page-card print-page hidden bg-sky-50 rounded-3xl p-6 sm:p-8 border-4 border-brandSky shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-brandSkyDark font-bold text-xs px-3 py-1 rounded-full border border-brandSky shadow-sm">
+                    🗣️ Misión 5
+                </span>
+                <div class="bg-white border border-brandSky text-brandSkyDark text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mt-2">
+                    <div class="bg-brandSky text-white p-3 rounded-2xl text-2xl shadow">🗣️</div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800 leading-tight">El Consejo del Micrófono Mágico</h2>
+                        <span class="text-xs font-bold text-brandSkyDark bg-white px-2 py-0.5 rounded-md border border-sky-300">
+                            Superpoder: ¡Tolerancia y Respeto!
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contenido Reto -->
+                <div class="mt-5 space-y-3">
+                    <div class="bg-white border-l-4 border-brandSky p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-brandSkyDark text-sm">🎙️ Cómo jugar:</p>
+                        <p class="text-gray-700 text-sm">Cuando hay un problema o una discusión en casa o en el salón, ¡nada de gritos! Activamos nuestro círculo especial.</p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-sky-600 p-3.5 rounded-r-xl shadow-sm">
+                        <p class="font-bold text-sky-700 text-sm">🧸 Tu misión:</p>
+                        <p class="text-gray-700 text-sm">Usamos una "ficha de palabra" (puede ser un juguetito o un cojín). Solo la persona que tiene la ficha en las manos puede hablar sin que nadie la interrumpa, respondiendo a dos preguntas mágicas: <i>¿Cómo me sentí y qué solución propongo?</i></p>
+                    </div>
+                </div>
+
+                <!-- Reflexión -->
+                <div class="mt-4 bg-white border-2 border-brandSky p-4 rounded-2xl relative shadow-sm">
+                    <div class="absolute -top-3 left-4 bg-brandSky text-white text-xs font-bold px-2 py-0.5 rounded-md">
+                        💡 Reflexión
+                    </div>
+                    <p class="text-gray-700 text-xs sm:text-sm pt-1 italic leading-relaxed">
+                        "Escuchar con atención y hablar con respeto es la llave maestra para abrir cualquier puerta difícil y convertir los enojos en grandes abrazos de paz."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactivo Check list -->
+            <div class="mt-4 pt-3 border-t border-sky-200 flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" onchange="toggleStar(5)" id="star-5" class="w-6 h-6 text-brandSky rounded-lg border-2 border-sky-300 focus:ring-0 cursor-pointer">
+                    <span class="font-bold text-gray-700 text-sm">¡Misión Cumplida!</span>
+                </label>
+                <span id="star-badge-5" class="opacity-30 text-2xl transition-all">⭐</span>
+            </div>
+
+            <div class="text-center text-xs text-sky-800 font-bold uppercase tracking-widest mt-2">
+                Página 6 de 7
+            </div>
+        </div>
+
+        <!-- PÁGINA 6: FELICITACIONES - PÁGINA AMARILLA / DORADA -->
+        <div id="page-6" class="page-card print-page hidden bg-amber-50 rounded-3xl p-6 sm:p-8 border-4 border-brandYellow shadow-playful relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+            <!-- Sello -->
+            <div class="flex justify-between items-center mb-2">
+                <span class="bg-white text-yellow-900 font-bold text-xs px-3 py-1 rounded-full border border-brandYellow shadow-sm">
+                    🏆 ¡Misión Final!
+                </span>
+                <div class="bg-white border border-brandYellow text-yellow-900 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-tree"></i> El Árbol de la Convivencia
+                </div>
+            </div>
+
+            <div class="text-center my-auto py-4">
+                <div class="relative inline-block my-2">
+                    <div class="bg-brandYellow text-yellow-900 p-5 rounded-full text-6xl shadow-lg border-4 border-yellow-400 animate-bounce inline-block">
+                        🏅
+                    </div>
+                    <span class="absolute -top-2 -right-2 text-3xl">✨</span>
+                    <span class="absolute -bottom-2 -left-2 text-3xl">🎉</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-black text-gray-800 leading-tight mt-3">
+                    ¡FELICITACIONES, <br><span class="text-yellow-800">SUPERHÉROE!</span>
+                </h2>
+
+                <div class="bg-white border-2 border-dashed border-brandYellow p-5 rounded-2xl my-4 shadow-sm text-center">
+                    <p class="text-gray-800 text-base sm:text-lg font-bold leading-relaxed">
+                        🚀 ¡Hora de actuar! ¿Cuál de estas misiones vas a elegir para empezar a jugar hoy mismo?
+                    </p>
+                    <p class="text-yellow-900 font-extrabold text-lg sm:text-xl mt-3 bg-yellow-100 py-2 px-4 rounded-xl border border-yellow-300 inline-block">
+                        ¡Demuestra de qué estás hecho, pequeño héroe! 🌟
+                    </p>
+                </div>
+
+                <!-- Diploma ficticio / Espacio para nombre -->
+                <div class="bg-yellow-100/70 border border-yellow-300 p-4 rounded-xl text-center">
+                    <p class="text-xs font-bold text-yellow-900 uppercase tracking-wider mb-1">Certificado de Superhéroe Oficial</p>
+                    <p class="text-sm text-gray-700">Este gran logro pertenece al Superhéroe de la Convivencia:</p>
+                    <div class="mt-2 border-b-2 border-dashed border-yellow-600 w-3/4 mx-auto text-yellow-900 font-bold text-lg py-1">
+                        __________________________
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-xs text-yellow-900 font-bold uppercase tracking-widest mt-2">
+                Página 7 de 7
+            </div>
+        </div>
+
+        <!-- CONTROLES DE NAVEGACIÓN (NO PRINT) -->
+        <div class="no-print mt-6 flex justify-between items-center bg-white/90 backdrop-blur p-4 rounded-2xl shadow-md border-2 border-sky-200">
+            <button id="btn-prev" onclick="changePage(-1)" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-4 py-2 rounded-xl text-sm transition flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                <i class="fa-solid fa-chevron-left"></i> Anterior
+            </button>
+
+            <!-- Indicadores de página -->
+            <div class="flex gap-1.5 sm:gap-2" id="page-dots">
+                <button onclick="goToPage(0)" class="w-3 h-3 rounded-full bg-brandGreen transition-all transform scale-125"></button>
+                <button onclick="goToPage(1)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToPage(2)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToPage(3)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToPage(4)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToPage(5)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+                <button onclick="goToPage(6)" class="w-3 h-3 rounded-full bg-gray-300 transition-all"></button>
+            </div>
+
+            <button id="btn-next" onclick="changePage(1)" class="bg-brandSky hover:bg-brandSkyDark text-white font-bold px-4 py-2 rounded-xl text-sm shadow transition flex items-center gap-2">
+                Siguiente <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT DE LÓGICA DE NAVEGACIÓN -->
+    <script>
+        let currentPage = 0;
+        const totalPages = 7;
+        const dotColors = ['bg-brandGreen', 'bg-brandSky', 'bg-brandOrange', 'bg-brandYellow', 'bg-brandGreen', 'bg-brandSky', 'bg-brandYellow'];
+
+        function showPage(pageIndex) {
+            for (let i = 0; i < totalPages; i++) {
+                const page = document.getElementById(`page-${i}`);
+                if (page) {
+                    if (i === pageIndex) {
+                        page.classList.remove('hidden');
+                    } else {
+                        page.classList.add('hidden');
+                    }
+                }
+            }
+
+            // Actualizar botones de navegación
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            
+            if (btnPrev) btnPrev.disabled = (pageIndex === 0);
+            if (btnNext) btnNext.disabled = (pageIndex === totalPages - 1);
+
+            // Actualizar puntos de indicación
+            const dotsContainer = document.getElementById('page-dots');
+            if (dotsContainer) {
+                const dots = dotsContainer.children;
+                for (let i = 0; i < dots.length; i++) {
+                    if (i === pageIndex) {
+                        dots[i].className = `w-3 h-3 rounded-full ${dotColors[i]} transition-all transform scale-125 ring-2 ring-offset-1 ring-gray-400`;
+                    } else {
+                        dots[i].className = "w-3 h-3 rounded-full bg-gray-300 transition-all";
+                    }
+                }
+            }
+
+            currentPage = pageIndex;
+        }
+
+        function changePage(delta) {
+            let newPage = currentPage + delta;
+            if (newPage >= 0 && newPage < totalPages) {
+                showPage(newPage);
+            }
+        }
+
+        function goToPage(pageIndex) {
+            if (pageIndex >= 0 && pageIndex < totalPages) {
+                showPage(pageIndex);
+            }
+        }
+
+        function toggleStar(index) {
+            const checkbox = document.getElementById(`star-${index}`);
+            const starBadge = document.getElementById(`star-badge-${index}`);
+            if (checkbox && starBadge) {
+                if (checkbox.checked) {
+                    starBadge.classList.remove('opacity-30');
+                    starBadge.classList.add('opacity-100', 'scale-125');
+                } else {
+                    starBadge.classList.remove('opacity-100', 'scale-125');
+                    starBadge.classList.add('opacity-30');
+                }
+            }
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage(0);
+        });
+    </script>
+</body>
+</html>
